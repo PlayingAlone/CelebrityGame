@@ -32,6 +32,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:layout_marginTop="40dp"
+            android:onClick="answer"
             android:tag="1"
             android:text="Button" />
 
@@ -40,6 +41,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
+            android:onClick="answer"
             android:tag="2"
             android:text="Button" />
 
@@ -48,6 +50,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
+            android:onClick="answer"
             android:tag="3"
             android:text="Button" />
 
@@ -56,6 +59,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
+            android:onClick="answer"
             android:tag="4"
             android:text="Button" />
 

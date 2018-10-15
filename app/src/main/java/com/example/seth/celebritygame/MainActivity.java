@@ -4,16 +4,22 @@ import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.util.Random;
+
+import static java.lang.Integer.parseInt;
 
 public class MainActivity extends AppCompatActivity {
     static public String imageUrl[] = new String[200];
     static public String names[] = new String[200];
     static public int imgCount = 0;
     static public int namesCount=0;
+    int answerButton;
+    int answerCeleb;
 
 
     @Override
@@ -54,12 +60,12 @@ public class MainActivity extends AppCompatActivity {
         Button button2 = findViewById(R.id.button2);
         Button button3 = findViewById(R.id.button3);
         Button button4 = findViewById(R.id.button4);
-        String buttons[] = new String[6];
+        String buttons[] = new String[5];
         int positions[]= new int[4];
         int min=0;
         int max=namesCount-30;
-        int randomCeleb=0;
-        String answer="";
+        int randomCeleb;
+
 
         for(int i=0;i<4;i++){
             positions[i]=5;
@@ -76,10 +82,12 @@ public class MainActivity extends AppCompatActivity {
         catch (Exception e) {
             e.printStackTrace();
         }
-        answer=names[randomCeleb];
+
 
         int randomButton = r.nextInt(4 - 1+ 1) + 1;
-        buttons[randomButton]=answer;
+        buttons[randomButton]=names[randomCeleb];
+        answerCeleb= randomCeleb;
+        answerButton= randomButton;
         positions[0]=randomButton;
         Log.i("random","correct celeb "+randomCeleb+" position"+ randomButton);
 
@@ -103,9 +111,18 @@ public class MainActivity extends AppCompatActivity {
         button2.setText(buttons[2]);
         button3.setText(buttons[3]);
         button4.setText(buttons[4]);
+    }
 
-
-
+    public void answer(View view){
+        Log.i("test",""+view.getTag());
+        Log.i("test",""+answerButton);
+        if(parseInt(view.getTag().toString()) == answerButton){
+            Toast.makeText(this, "Correct", Toast.LENGTH_SHORT).show();
+        }
+        else{
+            Toast.makeText(this, "Incorrect, the answer was "+names[answerCeleb], Toast.LENGTH_SHORT).show();
+        }
+        game();
 
     }
 
